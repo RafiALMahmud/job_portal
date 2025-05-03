@@ -16,6 +16,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'isAdmin']], functio
     Route::delete('/admin/users/{user}', [AdminController::class, 'destroyUser'])->name('admin.users.destroy');
     Route::put('/update-profile', [AccountController::class, 'updateProfile'])->name('admin.updateProfile');
     Route::put('/update-password', [AccountController::class, 'updatePassword'])->name('admin.updatePassword');
+    
+    // New routes for user management
+    Route::get('/users/create', [AdminController::class, 'createUser'])->name('admin.users.create');
+    Route::post('/users/store', [AdminController::class, 'storeUser'])->name('admin.users.store');
 });
 
 // Account Routes
